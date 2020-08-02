@@ -1,16 +1,11 @@
 class Orbit {
-  pos;
-  vel;
-  acc;
-  speed;
-  history = [];
-  lifespan = 160;
-
   constructor(x, y, speed, history) {
     this.pos = createVector(x, y);
     this.vel = p5.Vector.random2D();
+    this.acc = 0;
     this.speed = speed;
-    this.lifespan = history;
+    this.history = [];
+    this.lifespan = history || 160;
     this.vel.mult(8);
   }
 
@@ -33,7 +28,7 @@ class Orbit {
     beginShape();
     for (let i = 1; i < this.history.length; i++) {
       let opacity = i < 35 ? i : 35;
-      stroke(50, 50, 50, opacity);
+      stroke(100, 100, 100, opacity);
       line(
         this.history[i].x,
         this.history[i].y,
